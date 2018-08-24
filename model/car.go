@@ -1,5 +1,7 @@
 package model
 
+import "encoding/json"
+
 type Car struct {
 	OwnerName          string                `json:"ownerName"`
 	SerialNumber       uint64                `json:"serialNumber"`
@@ -35,6 +37,11 @@ type CarPerfomanceFigures struct {
 type CarPerfomanceFiguresAcceleration struct {
 	mph     uint16  `json:"mph"`
 	seconds float64 `json:"seconds"`
+}
+
+func (c *Car) JSON() []byte {
+	j, _ := json.Marshal(c)
+	return j
 }
 
 type CarStorage interface {
