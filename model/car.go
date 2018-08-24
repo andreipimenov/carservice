@@ -3,40 +3,40 @@ package model
 import "encoding/json"
 
 type Car struct {
-	OwnerName          string                `json:"ownerName"`
-	SerialNumber       uint64                `json:"serialNumber"`
-	ModelYear          uint64                `json:"modelYear"`
-	Code               string                `json:"code"`
-	VehicleCode        string                `json:"vehicleCode"`
-	Engine             *CarEngine            `json:"engine"`
-	FuelFigures        *CarFuelFigures       `json:"fuelFigures"`
-	PerformanceFigures *CarPerfomanceFigures `json:"performanceFigures"`
-	Manufacturer       string                `json:"manufacturer"`
-	Model              string                `json:"model"`
-	ActivationCode     string                `json:"activationCode"`
+	OwnerName          string                `json:"ownerName" bson:"ownerName"`
+	SerialNumber       uint64                `json:"serialNumber" bson:"serialNumber"`
+	ModelYear          uint64                `json:"modelYear" bson:"modelYear"`
+	Code               string                `json:"code" bson:"code"`
+	VehicleCode        string                `json:"vehicleCode" bson:"vehicleCode"`
+	Engine             *CarEngine            `json:"engine" bson:"engine"`
+	FuelFigures        *CarFuelFigures       `json:"fuelFigures" bson:"fuelFigures"`
+	PerformanceFigures *CarPerfomanceFigures `json:"performanceFigures" bson:"performanceFigures"`
+	Manufacturer       string                `json:"manufacturer" bson:"manufacturer"`
+	Model              string                `json:"model" bson:"model"`
+	ActivationCode     string                `json:"activationCode" bson:"activationCode"`
 }
 
 type CarEngine struct {
-	capacity         uint16 `json:"capacity"`
-	numCylinders     uint8  `json:"numCylinders"`
-	maxRpm           uint16 `json:"maxRpm"`
-	manufacturerCode string `json:"manufacturerCode"`
+	Capacity         uint16 `json:"capacity" bson:"capacity"`
+	NumCylinders     uint8  `json:"numCylinders" bson:"numCylinders"`
+	MaxRpm           uint16 `json:"maxRpm" bson:"maxRpm"`
+	ManufacturerCode string `json:"manufacturerCode" bson:"manufacturerCode"`
 }
 
 type CarFuelFigures struct {
-	speed            uint16  `json:"speed"`
-	mpg              float64 `json:"mpg"`
-	usageDescription string  `json:"usageDescription"`
+	Speed            uint16  `json:"speed" bson:"speed"`
+	Mpg              float64 `json:"mpg" bson:"mpg"`
+	UsageDescription string  `json:"usageDescription" bson:"usageDescription"`
 }
 
 type CarPerfomanceFigures struct {
-	octaneRating uint16                            `json:"octaneRating"`
-	acceleration *CarPerfomanceFiguresAcceleration `json:"acceleration"`
+	OctaneRating uint16                            `json:"octaneRating" bson:"octaneRating"`
+	Acceleration *CarPerfomanceFiguresAcceleration `json:"acceleration" bson:"acceleration"`
 }
 
 type CarPerfomanceFiguresAcceleration struct {
-	mph     uint16  `json:"mph"`
-	seconds float64 `json:"seconds"`
+	Mph     uint16  `json:"mph" bson:"mph"`
+	Seconds float64 `json:"seconds" bson:"seconds"`
 }
 
 func (c *Car) JSON() []byte {
